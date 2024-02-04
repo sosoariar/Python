@@ -9,4 +9,7 @@ url = 'https://book.douban.com/tag/%E6%8E%A8%E7%90%86'
 
 response = requests.get(url,headers=header)
 
-print(response.text)
+from bs4 import BeautifulSoup as bs
+bs_info = bs(response.text,'html.parser')
+print(bs_info.find_all('div',attrs={'class':'info'})[0])
+
