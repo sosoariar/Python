@@ -13,3 +13,7 @@ from bs4 import BeautifulSoup as bs
 bs_info = bs(response.text,'html.parser')
 print(bs_info.find_all('div',attrs={'class':'info'})[0])
 
+for tags in bs_info.find_all('div',attrs={'class':'info'}):
+    for atag in tags.find_all('a',):
+        print(atag.get('href'))
+        print(atag.get('title'))
